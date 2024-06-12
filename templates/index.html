@@ -3,17 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube to MP3/MP4 Converter</title>
+    <title>Conversor de Vídeos -  Youtube para MP3 </title>
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.ico') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
-    <h1>YouTube to MP3/MP4 Converter</h1>
-    <form action="/convert" method="post">
-        <input type="text" name="url" placeholder="YouTube URL" required>
-        <select name="format">
-            <option value="mp3">MP3</option>
-            <option value="mp4">MP4</option>
-        </select>
-        <button type="submit">Convert</button>
-    </form>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Your Logo" width="30" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" href="#">Menu</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Mensagem de boas-vindas centralizada -->
+        <div class="navbar-text mx-auto welcome-message">Bem-vindo! Faça bom uso do aplicativo. 😁</div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center">YouTube to MP3 Converter</h1>
+                <form action="/convert" method="post">
+                    <div class="form-group">
+                        <input type="text" name="url" class="form-control" placeholder="Cole o Link Aqui !" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Converter & Baixar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>&copy; 2024 | Feito por Pedro Henrique ❤️</p>
+                    <a href="https://www.linkedin.com/in/pedro-henrique-a-m-ribeiro-292890229/" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30" height="30">
+                    </a>
+                    <a href="https://github.com/peulearning" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="30" height="30">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

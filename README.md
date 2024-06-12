@@ -76,7 +76,3 @@ Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](./LIC
 4. Envie para o branch (`git push origin feature/fooBar`).
 5. Crie um novo Pull Request.
 
-## Contato
-
-- Autor: Seu Nome
-- Email: seuemail@dominio.com

@@ -1,6 +1,6 @@
-from flask import Flask, request, send_file, render_template
+from flask import Flask, request, send_file, render_template, redirect, url_for
 from pytube import YouTube
-from moviepy.editor import VideoFileClip
+from moviepy.editor import AudioFileClip
 import os
 
 app = Flask(__name__)
@@ -12,20 +12,18 @@ def index():
 @app.route('/convert', methods=['POST'])
 def convert_video():
     url = request.form['url']
-    video_format = request.form['format']
 
     yt = YouTube(url)
-    stream = yt.streams.filter(only_audio=(video_format == 'mp3')).first()
+    stream = yt.streams.filter(only_audio=True).first()
     output_file = stream.download()
 
-    if video_format == 'mp3':
-        base, ext = os.path.splitext(output_file)
-        mp3_file = base + '.mp3'
-        VideoFileClip(output_file).audio.write_audiofile(mp3_file)
-        os.remove(output_file)
-        output_file = mp3_file
+    # Convert to MP3
+    base, ext = os.path.splitext(output_file)
+    mp3_file = base + '.mp3'
+    AudioFileClip(output_file).write_audiofile(mp3_file)
+    os.remove(output_file)
 
-    return send_file(output_file, as_attachment=True)
+    return send_file(mp3_file, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
